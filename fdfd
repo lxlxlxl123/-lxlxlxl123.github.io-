@@ -1,0 +1,3610 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 6 章 Applications | 医学统计学与R语言</title>
+  <meta name="description" content="第 6 章 Applications | 医学统计学与R语言" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 6 章 Applications | 医学统计学与R语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 6 章 Applications | 医学统计学与R语言" />
+  
+  
+  
+
+<meta name="author" content="刘向" />
+
+
+<meta name="date" content="2021-07-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="methods.html"/>
+<link rel="next" href="final-words.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 简介</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#软件准备"><i class="fa fa-check"></i><b>1.1</b> 软件准备</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i><b>1.2</b> 致谢</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#声明"><i class="fa fa-check"></i><b>1.3</b> 声明</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="描述.html"><a href="描述.html"><i class="fa fa-check"></i><b>2</b> 计量资料的统计描述</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="描述.html"><a href="描述.html#数据录入"><i class="fa fa-check"></i><b>2.1</b> 数据录入</a></li>
+<li class="chapter" data-level="2.2" data-path="描述.html"><a href="描述.html#计算极差"><i class="fa fa-check"></i><b>2.2</b> 计算极差</a></li>
+<li class="chapter" data-level="2.3" data-path="描述.html"><a href="描述.html#计算标准差及四分位数间距"><i class="fa fa-check"></i><b>2.3</b> 计算标准差及四分位数间距</a></li>
+<li class="chapter" data-level="2.4" data-path="描述.html"><a href="描述.html#计算频数分布"><i class="fa fa-check"></i><b>2.4</b> 计算频数分布</a></li>
+<li class="chapter" data-level="2.5" data-path="描述.html"><a href="描述.html#描述性统计的度量"><i class="fa fa-check"></i><b>2.5</b> 描述性统计的度量</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="描述.html"><a href="描述.html#算术平均值"><i class="fa fa-check"></i><b>2.5.1</b> 算术平均值</a></li>
+<li class="chapter" data-level="2.5.2" data-path="描述.html"><a href="描述.html#几何平均值"><i class="fa fa-check"></i><b>2.5.2</b> 几何平均值</a></li>
+<li class="chapter" data-level="2.5.3" data-path="描述.html"><a href="描述.html#变异系数"><i class="fa fa-check"></i><b>2.5.3</b> 变异系数</a></li>
+<li class="chapter" data-level="2.5.4" data-path="描述.html"><a href="描述.html#众数及排序"><i class="fa fa-check"></i><b>2.5.4</b> 众数及排序</a></li>
+<li class="chapter" data-level="2.5.5" data-path="描述.html"><a href="描述.html#其他描述性统计"><i class="fa fa-check"></i><b>2.5.5</b> 其他描述性统计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="描述.html"><a href="描述.html#正态分布和标准正态分布"><i class="fa fa-check"></i><b>2.6</b> 正态分布和标准正态分布</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="描述.html"><a href="描述.html#概率密度函数dnorm"><i class="fa fa-check"></i><b>2.6.1</b> 概率密度函数dnorm()</a></li>
+<li class="chapter" data-level="2.6.2" data-path="描述.html"><a href="描述.html#概率累积分布函数pnorm"><i class="fa fa-check"></i><b>2.6.2</b> 概率累积分布函数pnorm()</a></li>
+<li class="chapter" data-level="2.6.3" data-path="描述.html"><a href="描述.html#正态分位函数qnorm"><i class="fa fa-check"></i><b>2.6.3</b> 正态分位函数qnorm()</a></li>
+<li class="chapter" data-level="2.6.4" data-path="描述.html"><a href="描述.html#生成正态分布函数rnorm"><i class="fa fa-check"></i><b>2.6.4</b> 生成正态分布函数rnorm()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="描述.html"><a href="描述.html#正态性检验"><i class="fa fa-check"></i><b>2.7</b> 正态性检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="推论统计.html"><a href="推论统计.html"><i class="fa fa-check"></i><b>3</b> 推论统计</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="推论统计.html"><a href="推论统计.html#统计量与标准误"><i class="fa fa-check"></i><b>3.1</b> 统计量与标准误</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="t-分布.html"><a href="t-分布.html"><i class="fa fa-check"></i><b>4</b> t 分布</a></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Methods</a></li>
+<li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> Applications</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">医学统计学与R语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="applications" class="section level1" number="6">
+<h1><span class="header-section-number">第 6 章</span> Applications</h1>
+<p>Some <em>significant</em> applications are demonstrated in this chapter.</p>
+<div id="example-one" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Example one</h2>
+</div>
+<div id="example-two" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Example two</h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="methods.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="final-words.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/04-application.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R语言与医学统计学.pdf", "R语言与医学统计学.epub"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 7 章 Final Words | 医学统计学与R语言</title>
+  <meta name="description" content="第 7 章 Final Words | 医学统计学与R语言" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 7 章 Final Words | 医学统计学与R语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 7 章 Final Words | 医学统计学与R语言" />
+  
+  
+  
+
+<meta name="author" content="刘向" />
+
+
+<meta name="date" content="2021-07-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="applications.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 简介</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#软件准备"><i class="fa fa-check"></i><b>1.1</b> 软件准备</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i><b>1.2</b> 致谢</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#声明"><i class="fa fa-check"></i><b>1.3</b> 声明</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="描述.html"><a href="描述.html"><i class="fa fa-check"></i><b>2</b> 计量资料的统计描述</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="描述.html"><a href="描述.html#数据录入"><i class="fa fa-check"></i><b>2.1</b> 数据录入</a></li>
+<li class="chapter" data-level="2.2" data-path="描述.html"><a href="描述.html#计算极差"><i class="fa fa-check"></i><b>2.2</b> 计算极差</a></li>
+<li class="chapter" data-level="2.3" data-path="描述.html"><a href="描述.html#计算标准差及四分位数间距"><i class="fa fa-check"></i><b>2.3</b> 计算标准差及四分位数间距</a></li>
+<li class="chapter" data-level="2.4" data-path="描述.html"><a href="描述.html#计算频数分布"><i class="fa fa-check"></i><b>2.4</b> 计算频数分布</a></li>
+<li class="chapter" data-level="2.5" data-path="描述.html"><a href="描述.html#描述性统计的度量"><i class="fa fa-check"></i><b>2.5</b> 描述性统计的度量</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="描述.html"><a href="描述.html#算术平均值"><i class="fa fa-check"></i><b>2.5.1</b> 算术平均值</a></li>
+<li class="chapter" data-level="2.5.2" data-path="描述.html"><a href="描述.html#几何平均值"><i class="fa fa-check"></i><b>2.5.2</b> 几何平均值</a></li>
+<li class="chapter" data-level="2.5.3" data-path="描述.html"><a href="描述.html#变异系数"><i class="fa fa-check"></i><b>2.5.3</b> 变异系数</a></li>
+<li class="chapter" data-level="2.5.4" data-path="描述.html"><a href="描述.html#众数及排序"><i class="fa fa-check"></i><b>2.5.4</b> 众数及排序</a></li>
+<li class="chapter" data-level="2.5.5" data-path="描述.html"><a href="描述.html#其他描述性统计"><i class="fa fa-check"></i><b>2.5.5</b> 其他描述性统计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="描述.html"><a href="描述.html#正态分布和标准正态分布"><i class="fa fa-check"></i><b>2.6</b> 正态分布和标准正态分布</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="描述.html"><a href="描述.html#概率密度函数dnorm"><i class="fa fa-check"></i><b>2.6.1</b> 概率密度函数dnorm()</a></li>
+<li class="chapter" data-level="2.6.2" data-path="描述.html"><a href="描述.html#概率累积分布函数pnorm"><i class="fa fa-check"></i><b>2.6.2</b> 概率累积分布函数pnorm()</a></li>
+<li class="chapter" data-level="2.6.3" data-path="描述.html"><a href="描述.html#正态分位函数qnorm"><i class="fa fa-check"></i><b>2.6.3</b> 正态分位函数qnorm()</a></li>
+<li class="chapter" data-level="2.6.4" data-path="描述.html"><a href="描述.html#生成正态分布函数rnorm"><i class="fa fa-check"></i><b>2.6.4</b> 生成正态分布函数rnorm()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="描述.html"><a href="描述.html#正态性检验"><i class="fa fa-check"></i><b>2.7</b> 正态性检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="推论统计.html"><a href="推论统计.html"><i class="fa fa-check"></i><b>3</b> 推论统计</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="推论统计.html"><a href="推论统计.html#统计量与标准误"><i class="fa fa-check"></i><b>3.1</b> 统计量与标准误</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="t-分布.html"><a href="t-分布.html"><i class="fa fa-check"></i><b>4</b> t 分布</a></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Methods</a></li>
+<li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> Applications</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">医学统计学与R语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="final-words" class="section level1" number="7">
+<h1><span class="header-section-number">第 7 章</span> Final Words</h1>
+<p>We have finished a nice book.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="applications.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/05-summary.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R语言与医学统计学.pdf", "R语言与医学统计学.epub"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>医学统计学与R语言</title>
+  <meta name="description" content="医学统计学与R语言" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="医学统计学与R语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="医学统计学与R语言" />
+  
+  
+  
+
+<meta name="author" content="刘向" />
+
+
+<meta name="date" content="2021-07-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="描述.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 简介</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#软件准备"><i class="fa fa-check"></i><b>1.1</b> 软件准备</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i><b>1.2</b> 致谢</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#声明"><i class="fa fa-check"></i><b>1.3</b> 声明</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="描述.html"><a href="描述.html"><i class="fa fa-check"></i><b>2</b> 计量资料的统计描述</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="描述.html"><a href="描述.html#数据录入"><i class="fa fa-check"></i><b>2.1</b> 数据录入</a></li>
+<li class="chapter" data-level="2.2" data-path="描述.html"><a href="描述.html#计算极差"><i class="fa fa-check"></i><b>2.2</b> 计算极差</a></li>
+<li class="chapter" data-level="2.3" data-path="描述.html"><a href="描述.html#计算标准差及四分位数间距"><i class="fa fa-check"></i><b>2.3</b> 计算标准差及四分位数间距</a></li>
+<li class="chapter" data-level="2.4" data-path="描述.html"><a href="描述.html#计算频数分布"><i class="fa fa-check"></i><b>2.4</b> 计算频数分布</a></li>
+<li class="chapter" data-level="2.5" data-path="描述.html"><a href="描述.html#描述性统计的度量"><i class="fa fa-check"></i><b>2.5</b> 描述性统计的度量</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="描述.html"><a href="描述.html#算术平均值"><i class="fa fa-check"></i><b>2.5.1</b> 算术平均值</a></li>
+<li class="chapter" data-level="2.5.2" data-path="描述.html"><a href="描述.html#几何平均值"><i class="fa fa-check"></i><b>2.5.2</b> 几何平均值</a></li>
+<li class="chapter" data-level="2.5.3" data-path="描述.html"><a href="描述.html#变异系数"><i class="fa fa-check"></i><b>2.5.3</b> 变异系数</a></li>
+<li class="chapter" data-level="2.5.4" data-path="描述.html"><a href="描述.html#众数及排序"><i class="fa fa-check"></i><b>2.5.4</b> 众数及排序</a></li>
+<li class="chapter" data-level="2.5.5" data-path="描述.html"><a href="描述.html#其他描述性统计"><i class="fa fa-check"></i><b>2.5.5</b> 其他描述性统计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="描述.html"><a href="描述.html#正态分布和标准正态分布"><i class="fa fa-check"></i><b>2.6</b> 正态分布和标准正态分布</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="描述.html"><a href="描述.html#概率密度函数dnorm"><i class="fa fa-check"></i><b>2.6.1</b> 概率密度函数dnorm()</a></li>
+<li class="chapter" data-level="2.6.2" data-path="描述.html"><a href="描述.html#概率累积分布函数pnorm"><i class="fa fa-check"></i><b>2.6.2</b> 概率累积分布函数pnorm()</a></li>
+<li class="chapter" data-level="2.6.3" data-path="描述.html"><a href="描述.html#正态分位函数qnorm"><i class="fa fa-check"></i><b>2.6.3</b> 正态分位函数qnorm()</a></li>
+<li class="chapter" data-level="2.6.4" data-path="描述.html"><a href="描述.html#生成正态分布函数rnorm"><i class="fa fa-check"></i><b>2.6.4</b> 生成正态分布函数rnorm()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="描述.html"><a href="描述.html#正态性检验"><i class="fa fa-check"></i><b>2.7</b> 正态性检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="推论统计.html"><a href="推论统计.html"><i class="fa fa-check"></i><b>3</b> 推论统计</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="推论统计.html"><a href="推论统计.html#统计量与标准误"><i class="fa fa-check"></i><b>3.1</b> 统计量与标准误</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="t-分布.html"><a href="t-分布.html"><i class="fa fa-check"></i><b>4</b> t 分布</a></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Methods</a></li>
+<li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> Applications</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">医学统计学与R语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">医学统计学与R语言</h1>
+<p class="author"><em>刘向</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>2021-07-04</em></p>
+</div>
+<div id="简介" class="section level1" number="1">
+<h1><span class="header-section-number">第 1 章</span> 简介</h1>
+<p>这份笔记主要是我个人在学习孙振球，徐勇勇老师的&lt;<医学统计学>&gt; 第4版的过程中，尽量使用编程语言R对书中的示例进行实现的记录， 并用Bookdown形成的。</p>
+<p><img src="R语言与医学统计学_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&lt;&lt;医学统计学&gt;&gt; 孙振球, 徐勇勇. 第4版[M]. 人民卫生出版社, 2014.</span></span></code></pre></div>
+<p>虽然在学习，整理过程中尽量将笔记的形式，内容结构进行力所能及的梳理，这里要特别感谢在学习过程中，在网络上找到的一些参考资料带来的帮助，然后将一些 示例与原书进行对照，以避免一些学习错误，但个人能力和精力实在有限，也容易会有理解不当，表述错误的情况， 如果您在参考的过程中，发现了这样的错误，请您尽量可以告诉我，我会确认并努力修正，如果您对文档有疑问或建议，都可以邮件告知我。在学习过程中受wxhyihuan前辈的启发并参考了他的部分学习笔记</p>
+<p>建议您购买原版教材结合本笔记学习，您也可以在网络上找到电子书方便参考，如需求电子版可邮件联系作者。</p>
+<p><strong>bookdown</strong> 包可以从CRAN 或 Github安装:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;bookdown&quot;</span>)</span>
+<span id="cb2-2"><a href="index.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or the development version</span></span>
+<span id="cb2-3"><a href="index.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
+<div id="软件准备" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> 软件准备</h2>
+<p>本文档使用到的主要软件 R version 4.1.0 (2021-05-18) – “Camp Pontanezen,” 和 RStudio 版本是 1.4.1717.</p>
+<p>如果您R语言的新手，您可以在下面找到一些快速上手的学习资料：</p>
+<p>1.<a href="https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf">R for Beginners</a></p>
+<p>2.<a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>## R version 4.1.0 (2021-05-18)
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows 10 x64 (build 19041)
+## 
+## Matrix products: default
+## 
+## locale:
+## [1] LC_COLLATE=Chinese (Simplified)_China.936 
+## [2] LC_CTYPE=Chinese (Simplified)_China.936   
+## [3] LC_MONETARY=Chinese (Simplified)_China.936
+## [4] LC_NUMERIC=C                              
+## [5] LC_TIME=Chinese (Simplified)_China.936    
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] png_0.1-7    jpeg_0.1-8.1
+## 
+## loaded via a namespace (and not attached):
+##  [1] bookdown_0.22     digest_0.6.27     magrittr_2.0.1    evaluate_0.14    
+##  [5] highr_0.9         rlang_0.4.11      stringi_1.6.1     rstudioapi_0.13  
+##  [9] rmarkdown_2.9     tools_4.1.0       stringr_1.4.0     xfun_0.24        
+## [13] yaml_2.2.1        compiler_4.1.0    htmltools_0.5.1.1 knitr_1.33</code></pre>
+<p><a href="index.html#fig:figureLable">1.1</a></p>
+<div class="figure"><span id="fig:figureLable"></span>
+<img src="R语言与医学统计学_files/figure-html/figureLable-1.png" alt="完全随机设计的统计方法选择思路" width="672" />
+<p class="caption">
+图 1.1: 完全随机设计的统计方法选择思路
+</p>
+</div>
+</div>
+<div id="致谢" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> 致谢</h2>
+<p>谨以此书献给我的导师范老师！</p>
+</div>
+<div id="声明" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> 声明</h2>
+<p>为方便使用，本书保留源代码，如有任何问题请联系作者 <a href="mailto:921818611@qq.com" class="email">921818611@qq.com</a>。</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="描述.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/index.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R语言与医学统计学.pdf", "R语言与医学统计学.epub"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 2 章 Introduction | 医学统计学与R语言</title>
+  <meta name="description" content="第 2 章 Introduction | 医学统计学与R语言" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 2 章 Introduction | 医学统计学与R语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 2 章 Introduction | 医学统计学与R语言" />
+  
+  
+  
+
+<meta name="author" content="刘向" />
+
+
+<meta name="date" content="2021-07-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="literature.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 简介</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#软件准备"><i class="fa fa-check"></i><b>1.1</b> 软件准备</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i><b>1.2</b> 致谢</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#声明"><i class="fa fa-check"></i><b>1.3</b> 声明</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">医学统计学与R语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1" number="2">
+<h1><span class="header-section-number">第 2 章</span> Introduction</h1>
+<p>You can label chapter and section titles using <code>{#label}</code> after them, e.g., we can reference Chapter <a href="intro.html#intro">2</a>. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter <a href="methods.html#methods">4</a>.</p>
+<p>Figures and tables with captions will be placed in <code>figure</code> and <code>table</code> environments, respectively.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
+<span id="cb1-2"><a href="intro.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:nice-fig"></span>
+<img src="R语言与医学统计学_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
+<p class="caption">
+图 2.1: Here is a nice figure!
+</p>
+</div>
+<p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="intro.html#fig:nice-fig">2.1</a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="intro.html#tab:nice-tab">2.1</a>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro.html#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb2-2"><a href="intro.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(iris, <span class="dv">20</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
+<span id="cb2-3"><a href="intro.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-4"><a href="intro.html#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:nice-tab">表 2.1: </span>Here is a nice table!</caption>
+<thead>
+<tr class="header">
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.6</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.7</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.6</td>
+<td align="right">3.4</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.0</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.4</td>
+<td align="right">2.9</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.8</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.3</td>
+<td align="right">3.0</td>
+<td align="right">1.1</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.8</td>
+<td align="right">4.0</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.7</td>
+<td align="right">4.4</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.3</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.7</td>
+<td align="right">3.8</td>
+<td align="right">1.7</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.5</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+</tbody>
+</table>
+<p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2021</a>)</span> in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(<a href="#ref-xie2015" role="doc-biblioref">Xie 2015</a>)</span>.</p>
+
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-xie2015" class="csl-entry">
+Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.
+</div>
+<div id="ref-R-bookdown" class="csl-entry">
+———. 2021. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/01-intro.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R语言与医学统计学.pdf", "R语言与医学统计学.epub"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 3 章 Literature | 医学统计学与R语言</title>
+  <meta name="description" content="第 3 章 Literature | 医学统计学与R语言" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 3 章 Literature | 医学统计学与R语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 3 章 Literature | 医学统计学与R语言" />
+  
+  
+  
+
+<meta name="author" content="刘向" />
+
+
+<meta name="date" content="2021-07-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="methods.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 简介</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">医学统计学与R语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="literature" class="section level1" number="3">
+<h1><span class="header-section-number">第 3 章</span> Literature</h1>
+<p>Here is a review of existing methods.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/02-literature.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R语言与医学统计学.pdf", "R语言与医学统计学.epub"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 5 章 Methods | 医学统计学与R语言</title>
+  <meta name="description" content="第 5 章 Methods | 医学统计学与R语言" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 5 章 Methods | 医学统计学与R语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 5 章 Methods | 医学统计学与R语言" />
+  
+  
+  
+
+<meta name="author" content="刘向" />
+
+
+<meta name="date" content="2021-07-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="t-分布.html"/>
+<link rel="next" href="applications.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 简介</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#软件准备"><i class="fa fa-check"></i><b>1.1</b> 软件准备</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i><b>1.2</b> 致谢</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#声明"><i class="fa fa-check"></i><b>1.3</b> 声明</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="描述.html"><a href="描述.html"><i class="fa fa-check"></i><b>2</b> 计量资料的统计描述</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="描述.html"><a href="描述.html#数据录入"><i class="fa fa-check"></i><b>2.1</b> 数据录入</a></li>
+<li class="chapter" data-level="2.2" data-path="描述.html"><a href="描述.html#计算极差"><i class="fa fa-check"></i><b>2.2</b> 计算极差</a></li>
+<li class="chapter" data-level="2.3" data-path="描述.html"><a href="描述.html#计算标准差及四分位数间距"><i class="fa fa-check"></i><b>2.3</b> 计算标准差及四分位数间距</a></li>
+<li class="chapter" data-level="2.4" data-path="描述.html"><a href="描述.html#计算频数分布"><i class="fa fa-check"></i><b>2.4</b> 计算频数分布</a></li>
+<li class="chapter" data-level="2.5" data-path="描述.html"><a href="描述.html#描述性统计的度量"><i class="fa fa-check"></i><b>2.5</b> 描述性统计的度量</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="描述.html"><a href="描述.html#算术平均值"><i class="fa fa-check"></i><b>2.5.1</b> 算术平均值</a></li>
+<li class="chapter" data-level="2.5.2" data-path="描述.html"><a href="描述.html#几何平均值"><i class="fa fa-check"></i><b>2.5.2</b> 几何平均值</a></li>
+<li class="chapter" data-level="2.5.3" data-path="描述.html"><a href="描述.html#变异系数"><i class="fa fa-check"></i><b>2.5.3</b> 变异系数</a></li>
+<li class="chapter" data-level="2.5.4" data-path="描述.html"><a href="描述.html#众数及排序"><i class="fa fa-check"></i><b>2.5.4</b> 众数及排序</a></li>
+<li class="chapter" data-level="2.5.5" data-path="描述.html"><a href="描述.html#其他描述性统计"><i class="fa fa-check"></i><b>2.5.5</b> 其他描述性统计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="描述.html"><a href="描述.html#正态分布和标准正态分布"><i class="fa fa-check"></i><b>2.6</b> 正态分布和标准正态分布</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="描述.html"><a href="描述.html#概率密度函数dnorm"><i class="fa fa-check"></i><b>2.6.1</b> 概率密度函数dnorm()</a></li>
+<li class="chapter" data-level="2.6.2" data-path="描述.html"><a href="描述.html#概率累积分布函数pnorm"><i class="fa fa-check"></i><b>2.6.2</b> 概率累积分布函数pnorm()</a></li>
+<li class="chapter" data-level="2.6.3" data-path="描述.html"><a href="描述.html#正态分位函数qnorm"><i class="fa fa-check"></i><b>2.6.3</b> 正态分位函数qnorm()</a></li>
+<li class="chapter" data-level="2.6.4" data-path="描述.html"><a href="描述.html#生成正态分布函数rnorm"><i class="fa fa-check"></i><b>2.6.4</b> 生成正态分布函数rnorm()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="描述.html"><a href="描述.html#正态性检验"><i class="fa fa-check"></i><b>2.7</b> 正态性检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="推论统计.html"><a href="推论统计.html"><i class="fa fa-check"></i><b>3</b> 推论统计</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="推论统计.html"><a href="推论统计.html#统计量与标准误"><i class="fa fa-check"></i><b>3.1</b> 统计量与标准误</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="t-分布.html"><a href="t-分布.html"><i class="fa fa-check"></i><b>4</b> t 分布</a></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Methods</a></li>
+<li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> Applications</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">医学统计学与R语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="methods" class="section level1" number="5">
+<h1><span class="header-section-number">第 5 章</span> Methods</h1>
+<p>We describe our methods in this chapter.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="t-分布.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/03-method.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R语言与医学统计学.pdf", "R语言与医学统计学.epub"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
+
+fig:figureLable
+tab:表1
+fig:unnamed-chunk-10
+fig:unnamed-chunk-16
+fig:unnamed-chunk-17
+fig:unnamed-chunk-18
+fig:unnamed-chunk-19
+fig:unnamed-chunk-20
+简介
+软件准备
+致谢
+声明
+描述
+数据录入
+计算极差
+计算标准差及四分位数间距
+计算频数分布
+描述性统计的度量
+算术平均值
+几何平均值
+变异系数
+众数及排序
+其他描述性统计
+正态分布和标准正态分布
+概率密度函数dnorm
+概率累积分布函数pnorm
+正态分位函数qnorm
+生成正态分布函数rnorm
+正态性检验
+推论统计
+统计量与标准误
+t-分布
+methods
+applications
+example-one
+example-two
+final-words
+
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>References | 医学统计学与R语言</title>
+  <meta name="description" content="References | 医学统计学与R语言" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="References | 医学统计学与R语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="References | 医学统计学与R语言" />
+  
+  
+  
+
+<meta name="author" content="刘向" />
+
+
+<meta name="date" content="2021-07-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="final-words.html"/>
+
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 简介</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#软件准备"><i class="fa fa-check"></i><b>1.1</b> 软件准备</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i><b>1.2</b> 致谢</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#声明"><i class="fa fa-check"></i><b>1.3</b> 声明</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="描述.html"><a href="描述.html"><i class="fa fa-check"></i><b>2</b> 计量资料的统计描述</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="描述.html"><a href="描述.html#数据录入"><i class="fa fa-check"></i><b>2.1</b> 数据录入</a></li>
+<li class="chapter" data-level="2.2" data-path="描述.html"><a href="描述.html#计算极差"><i class="fa fa-check"></i><b>2.2</b> 计算极差</a></li>
+<li class="chapter" data-level="2.3" data-path="描述.html"><a href="描述.html#计算标准差及四分位数间距"><i class="fa fa-check"></i><b>2.3</b> 计算标准差及四分位数间距</a></li>
+<li class="chapter" data-level="2.4" data-path="描述.html"><a href="描述.html#计算频数分布"><i class="fa fa-check"></i><b>2.4</b> 计算频数分布</a></li>
+<li class="chapter" data-level="2.5" data-path="描述.html"><a href="描述.html#描述性统计的度量"><i class="fa fa-check"></i><b>2.5</b> 描述性统计的度量</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="描述.html"><a href="描述.html#算术平均值"><i class="fa fa-check"></i><b>2.5.1</b> 算术平均值</a></li>
+<li class="chapter" data-level="2.5.2" data-path="描述.html"><a href="描述.html#几何平均值"><i class="fa fa-check"></i><b>2.5.2</b> 几何平均值</a></li>
+<li class="chapter" data-level="2.5.3" data-path="描述.html"><a href="描述.html#变异系数"><i class="fa fa-check"></i><b>2.5.3</b> 变异系数</a></li>
+<li class="chapter" data-level="2.5.4" data-path="描述.html"><a href="描述.html#众数及排序"><i class="fa fa-check"></i><b>2.5.4</b> 众数及排序</a></li>
+<li class="chapter" data-level="2.5.5" data-path="描述.html"><a href="描述.html#其他描述性统计"><i class="fa fa-check"></i><b>2.5.5</b> 其他描述性统计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="描述.html"><a href="描述.html#正态分布和标准正态分布"><i class="fa fa-check"></i><b>2.6</b> 正态分布和标准正态分布</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="描述.html"><a href="描述.html#概率密度函数dnorm"><i class="fa fa-check"></i><b>2.6.1</b> 概率密度函数dnorm()</a></li>
+<li class="chapter" data-level="2.6.2" data-path="描述.html"><a href="描述.html#概率累积分布函数pnorm"><i class="fa fa-check"></i><b>2.6.2</b> 概率累积分布函数pnorm()</a></li>
+<li class="chapter" data-level="2.6.3" data-path="描述.html"><a href="描述.html#正态分位函数qnorm"><i class="fa fa-check"></i><b>2.6.3</b> 正态分位函数qnorm()</a></li>
+<li class="chapter" data-level="2.6.4" data-path="描述.html"><a href="描述.html#生成正态分布函数rnorm"><i class="fa fa-check"></i><b>2.6.4</b> 生成正态分布函数rnorm()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="描述.html"><a href="描述.html#正态性检验"><i class="fa fa-check"></i><b>2.7</b> 正态性检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="推论统计.html"><a href="推论统计.html"><i class="fa fa-check"></i><b>3</b> 推论统计</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="推论统计.html"><a href="推论统计.html#统计量与标准误"><i class="fa fa-check"></i><b>3.1</b> 统计量与标准误</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="t-分布.html"><a href="t-分布.html"><i class="fa fa-check"></i><b>4</b> t 分布</a></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Methods</a></li>
+<li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> Applications</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">医学统计学与R语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="final-words.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/06-references.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R语言与医学统计学.pdf", "R语言与医学统计学.epub"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
+
+[["index.html", "医学统计学与R语言 第 1 章 简介 1.1 软件准备 1.2 致谢 1.3 声明", " 医学统计学与R语言 刘向 2021-07-04 第 1 章 简介 这份笔记主要是我个人在学习孙振球，徐勇勇老师的&lt;&gt; 第4版的过程中，尽量使用编程语言R对书中的示例进行实现的记录， 并用Bookdown形成的。 #&lt;&lt;医学统计学&gt;&gt; 孙振球, 徐勇勇. 第4版[M]. 人民卫生出版社, 2014. 虽然在学习，整理过程中尽量将笔记的形式，内容结构进行力所能及的梳理，这里要特别感谢在学习过程中，在网络上找到的一些参考资料带来的帮助，然后将一些 示例与原书进行对照，以避免一些学习错误，但个人能力和精力实在有限，也容易会有理解不当，表述错误的情况， 如果您在参考的过程中，发现了这样的错误，请您尽量可以告诉我，我会确认并努力修正，如果您对文档有疑问或建议，都可以邮件告知我。在学习过程中受wxhyihuan前辈的启发并参考了他的部分学习笔记 建议您购买原版教材结合本笔记学习，您也可以在网络上找到电子书方便参考，如需求电子版可邮件联系作者。 bookdown 包可以从CRAN 或 Github安装: install.packages(&quot;bookdown&quot;) # or the development version # devtools::install_github(&quot;rstudio/bookdown&quot;) 1.1 软件准备 本文档使用到的主要软件 R version 4.1.0 (2021-05-18) – “Camp Pontanezen,” 和 RStudio 版本是 1.4.1717. 如果您R语言的新手，您可以在下面找到一些快速上手的学习资料： 1.R for Beginners 2.R Markdown: The Definitive Guide sessionInfo() ## R version 4.1.0 (2021-05-18) ## Platform: x86_64-w64-mingw32/x64 (64-bit) ## Running under: Windows 10 x64 (build 19041) ## ## Matrix products: default ## ## locale: ## [1] LC_COLLATE=Chinese (Simplified)_China.936 ## [2] LC_CTYPE=Chinese (Simplified)_China.936 ## [3] LC_MONETARY=Chinese (Simplified)_China.936 ## [4] LC_NUMERIC=C ## [5] LC_TIME=Chinese (Simplified)_China.936 ## ## attached base packages: ## [1] stats graphics grDevices utils datasets methods base ## ## other attached packages: ## [1] png_0.1-7 jpeg_0.1-8.1 ## ## loaded via a namespace (and not attached): ## [1] bookdown_0.22 digest_0.6.27 magrittr_2.0.1 evaluate_0.14 ## [5] highr_0.9 rlang_0.4.11 stringi_1.6.1 rstudioapi_0.13 ## [9] rmarkdown_2.9 tools_4.1.0 stringr_1.4.0 xfun_0.24 ## [13] yaml_2.2.1 compiler_4.1.0 htmltools_0.5.1.1 knitr_1.33 1.1 图 1.1: 完全随机设计的统计方法选择思路 1.2 致谢 谨以此书献给我的导师范老师！ 1.3 声明 为方便使用，本书保留源代码，如有任何问题请联系作者 921818611@qq.com。 "],["描述.html", "第 2 章 计量资料的统计描述 2.1 数据录入 2.2 计算极差 2.3 计算标准差及四分位数间距 2.4 计算频数分布 2.5 描述性统计的度量 2.6 正态分布和标准正态分布 2.7 正态性检验", " 第 2 章 计量资料的统计描述 描述统计学(广义上的描述统计学,Descriptive statistics)是统计学的一个分支，旨在概括、描述和呈现一系列值或数据集(比如对单样本的分析)。 由于难以识别数据中的任何模式，没有任何准备或没有任何汇总度量的长系列值通常无法提供信息。 描述统计通常是统计分析的第一步，也是统计分析的重要组成部分。它允许通过检测潜在的异常值(即似乎与其他数据分离的数据点)、 收集或编码错误来检查数据的质量。它还有助于“理解”数据，如果表述得当，描述性统计是进一步分析的一个很好的起点。 位置与离散度量是两种不同的总结数据的测量方法。其中一些给出了关于数据位置的理解，另一些给出了关于数据分散性的理解。 在实践中，这两种度量方法经常一起使用，以便以最简洁和完整的方式总结数据。 位置度量允许查看数据位于“何处”，围绕哪个值。换句话说，位置度量可了解什么是总体趋势，即数据整体的“位置”。 它主要包括：平均值，中位数，四分位数，第三、四分位数，众数，最大值，最小值等。 常见的离散度量，它有助于了解离散度和数据的可变性(在何种程度上分布被压缩或拉伸):范围，标准偏差，方差，四分位间距，变异系数。 2.1 数据录入 options (warn = -1)#不显示警告信息 RBC &lt;- c(3.96,4.23,4.42,3.59,5.12,4.02,4.32,3.72,4.76,4.16,4.61,4.26, 3.77,4.20,4.36,3.07,4.89,3.97,4.28,3.64,4.66,4.04,4.55,4.25, 4.63,3.91,4.41,3.52,5.03,4.01,4.30,4.19,4.75,4.14,4.57,4.26, 4.56,3.79,3.89,4.21,4.95,3.98,4.29,3.67,4.69,4.12,4.56,4.26, 4.66,4.28,3.83,4.20,5.24,4.02,4.33,3.76,4.81,4.17,3.96,3.27, 4.61,4.26,3.96,4.23,3.76,4.01,4.29,3.67,3.39,4.12,4.27,3.61, 4.98,4.24,3.83,4.20,3.71,4.03,4.34,4.69,3.62,4.18,4.26,4.36, 5.28,4.21,4.42,4.36,3.66,4.02,4.31,4.83,3.59,3.97,3.96,4.49, 5.11,4.20,4.36,4.54,3.72,3.97,4.28,4.76,3.21,4.04,4.56,4.25, 4.92,4.23,4.47,3.60,5.23,4.02,4.32,4.68,4.76,3.69,4.61,4.26, 3.89,4.21,4.36,3.42,5.01,4.01,4.29,3.68,4.71,4.13,4.57,4.26, 4.03,5.46,4.16,3.64,4.16,3.76)#为方便使用数据，直接以向量方式导入 # Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \\@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \\@ref(tab:nice-tab). matrix_RBC &lt;- matrix(RBC,ncol=11,byrow = T)#转化成矩阵 knitr::kable( head(matrix_RBC,10), caption = &#39;某医院用随机抽样的方法检测了138名正常成年女子的红细胞数目(RBC，x10^12/L )&#39;, booktabs = TRUE)#用表格方式查看矩阵 表 2.1: 某医院用随机抽样的方法检测了138名正常成年女子的红细胞数目(RBC，x10^12/L ) 3.96 4.23 4.42 3.59 5.12 4.02 4.32 3.72 4.76 4.16 4.61 4.26 3.77 4.20 4.36 3.07 4.89 3.97 4.28 3.64 4.66 4.04 4.55 4.25 4.63 3.91 4.41 3.52 5.03 4.01 4.30 4.19 4.75 4.14 4.57 4.26 4.56 3.79 3.89 4.21 4.95 3.98 4.29 3.67 4.69 4.12 4.56 4.26 4.66 4.28 3.83 4.20 5.24 4.02 4.33 3.76 4.81 4.17 3.96 3.27 4.61 4.26 3.96 4.23 3.76 4.01 4.29 3.67 3.39 4.12 4.27 3.61 4.98 4.24 3.83 4.20 3.71 4.03 4.34 4.69 3.62 4.18 4.26 4.36 5.28 4.21 4.42 4.36 3.66 4.02 4.31 4.83 3.59 3.97 3.96 4.49 5.11 4.20 4.36 4.54 3.72 3.97 4.28 4.76 3.21 4.04 4.56 4.25 4.92 4.23 2.2 计算极差 range(RBC) #返回最小值和最大值 ## [1] 3.07 5.46 rge&lt;-max(RBC)-min(RBC)#计算极差 rge ## [1] 2.39 2.3 计算标准差及四分位数间距 #sd()计算标准差，quantile()计算分位数 sd&lt;-sd(RBC) sd ## [1] 0.4457298 quan&lt;-quantile(RBC,c(0.25,0.75)) quan ## 25% 75% ## 3.9625 4.5275 2.4 计算频数分布 breaks &lt;- seq(min(RBC), max(RBC), length.out = 8) RBC_cut &lt;- cut(RBC, breaks, right=T,include.lowest=T) RBC_freq &lt;- table(RBC_cut) table(RBC_cut) ## RBC_cut ## [3.07,3.41] (3.41,3.75] (3.75,4.09] (4.09,4.44] (4.44,4.78] (4.78,5.12] ## 4 17 29 51 23 9 ## (5.12,5.46] ## 5 library(ggplot2) hist_RBC &lt;- ggplot(as.data.frame(RBC), aes(x=RBC)) + geom_histogram(fill=&quot;#69b3a2&quot;,binwidth=0.34) hist_RBC 图 2.1: 红细胞分布直方图 2.5 描述性统计的度量 2.5.1 算术平均值 算术均数简称均值(mean),用于反映组呈对称分布的变量值在数量上的平均水平。 mean(RBC) ## [1] 4.227029 2.5.2 几何平均值 几何均数(geometric mean)可用于反映一组经 对数转换 后呈对称分布的变量值在数量上的平均水平。 exp(mean(log(RBC))) ## [1] 4.203676 2.5.3 变异系数 变异系数(Cefficient of variation，CV)，当进行两个或多个资料变异程度的比较时，如果度量单位与平均数相同， 可以直接利用标准差来比较。如果单位和（或）平均数不同时，比较其变异程度就不能采用标准差， 而需采用标准差与平均数的比值（相对值）来比较。标准差与平均数的比值称为变异系数。 变异系数可以消除单位和（或）平均数不同对两个或多个资料变异程度比较的影响。 sd(RBC)/mean(RBC)*100 ## [1] 10.54475 raster::cv(RBC) ## [1] 10.54475 2.5.4 众数及排序 sort(RBC, decreasing = TRUE) #排序 ## [1] 5.46 5.28 5.24 5.23 5.12 5.11 5.03 5.01 4.98 4.95 4.92 4.89 4.83 4.81 4.76 ## [16] 4.76 4.76 4.75 4.71 4.69 4.69 4.68 4.66 4.66 4.63 4.61 4.61 4.61 4.57 4.57 ## [31] 4.56 4.56 4.56 4.55 4.54 4.49 4.47 4.42 4.42 4.41 4.36 4.36 4.36 4.36 4.36 ## [46] 4.34 4.33 4.32 4.32 4.31 4.30 4.29 4.29 4.29 4.28 4.28 4.28 4.27 4.26 4.26 ## [61] 4.26 4.26 4.26 4.26 4.26 4.25 4.25 4.24 4.23 4.23 4.23 4.21 4.21 4.21 4.20 ## [76] 4.20 4.20 4.20 4.19 4.18 4.17 4.16 4.16 4.16 4.14 4.13 4.12 4.12 4.04 4.04 ## [91] 4.03 4.03 4.02 4.02 4.02 4.02 4.01 4.01 4.01 3.98 3.97 3.97 3.97 3.96 3.96 ## [106] 3.96 3.96 3.91 3.89 3.89 3.83 3.83 3.79 3.77 3.76 3.76 3.76 3.72 3.72 3.71 ## [121] 3.69 3.68 3.67 3.67 3.66 3.64 3.64 3.62 3.61 3.60 3.59 3.59 3.52 3.42 3.39 ## [136] 3.27 3.21 3.07 sort(table(RBC), decreasing = TRUE) #众数 ## RBC ## 4.26 4.36 3.96 4.02 4.2 3.76 3.97 4.01 4.16 4.21 4.23 4.28 4.29 4.56 4.61 4.76 ## 7 5 4 4 4 3 3 3 3 3 3 3 3 3 3 3 ## 3.59 3.64 3.67 3.72 3.83 3.89 4.03 4.04 4.12 4.25 4.32 4.42 4.57 4.66 4.69 3.07 ## 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 ## 3.21 3.27 3.39 3.42 3.52 3.6 3.61 3.62 3.66 3.68 3.69 3.71 3.77 3.79 3.91 3.98 ## 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ## 4.13 4.14 4.17 4.18 4.19 4.24 4.27 4.3 4.31 4.33 4.34 4.41 4.47 4.49 4.54 4.55 ## 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ## 4.63 4.68 4.71 4.75 4.81 4.83 4.89 4.92 4.95 4.98 5.01 5.03 5.11 5.12 5.23 5.24 ## 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ## 5.28 5.46 ## 1 1 2.5.5 其他描述性统计 R语言中，可以使用summary()来计算最小，第1四分位数，中位数，平均值，第3，4分位数和最大值的数据集的所有数值变量。 summary(RBC) ## Min. 1st Qu. Median Mean 3rd Qu. Max. ## 3.070 3.962 4.230 4.227 4.527 5.460 2.6 正态分布和标准正态分布 正态分布（Normal distribution）又名高斯分布（Gaussian distribution），是一个非常常见的连续概率分布。 正态分布在统计学上十分重要，经常用在自然和社会科学来代表一个不明的随机变量。 可以说，弄懂正态分布是灵活运用统计学中各种假设检验方法、理解p值，均数置信区间的前提。 R包含有很丰富的正态分布相关的函数功能， 比如概率密度函数dnorm()，概率累积分布函数pnorm()，正态分位函数qnorm()和用来生成特定正态分布数据序列的函数rnorm()， 以及检测数据时候符合正态分布的方法，这里主要做下面一些介绍。 2.6.1 概率密度函数dnorm() 概率密度函数（Probability density function），R中即为dnorm()， 它可以给出了指定均值和标准差下每个点的概率分布的高度， 越高就代表着这个点/区间的概率越密集(大)。概率密度函数有时也被称为概率分布函数，但这种称法可能会和累积分布函数pnorm()混淆。 #在-10~10区间等分的 100个 数据集x x &lt;- seq(-10, 10, by = .1) #创建一个均值是2.5，标准差是0.5正态分布 y y &lt;- dnorm(x, mean = 2.5, sd = 0.5) #将 y 中的落在x数据集上的数据画出来 plot(x,y,col=&quot;red&quot;,pch=20) 图 2.2: 概率密度函数示例 #也可以使用ggpubr包中的ggdensity函数直接画概率密度曲线 library(ggpubr) ggdensity(RBC) 图 2.3: ggpubr概率密度函数示例 2.6.2 概率累积分布函数pnorm() 累积分布函数（Cumulative Distribution Function），R中即为pnorm()， 又叫分布函数，是概率密度函数的积分，能完整描述一个实随机变量X的概率分布，它给出一个正态分布中小于一个给定数字的累计概率(即指定定点的左边范围的曲线面积)。 #在-10~10区间等分的 40个 数据集x x &lt;- seq(-10, 10, by = .5) #创建一个均值是2.5，标准差是0.5正态分布 y y &lt;- pnorm(x, mean = 2.5, sd = 0.5) #将 y 中的落在x数据集上的累计概率画出来 plot(x,y,col=&quot;red&quot;,pch=20) 图 2.4: 累积分布密度函数示例 2.6.3 正态分位函数qnorm() #在0~1区间等分的 50个 数据集x x &lt;- x &lt;- seq(0, 1, by = 0.02) #创建一个均值是2，标准差是1正态分布 y y &lt;- qnorm(x, mean = 2, sd = 1) #将 y 中的落在x数据集上的数字画出来 plot(x,y,col=&quot;red&quot;,pch=20) 图 2.5: 正态分布函数示例 2.6.4 生成正态分布函数rnorm() #设置随机种子，便于重复后续的数据选取 set.seed(50) #在标准正态分布中随机选取50个数据 y &lt;- rnorm(50) #对选区的数据绘制频率分布图 hist(y,col=&quot;#A8D6FF&quot;,labels =TRUE) 图 2.6: 正态分布图 2.7 正态性检验 许多计量资料的分析方法要求数据分布是正态或近似正态，因此对原始独立测定数据进行正态性检验是十分必要的。通过绘制数据的频数分布直方图来定性地判断数据分布正态性。 常用正态性检验方法 1.用R语言做正态分布检验 正态性检验主要有三类方法: 计算综合统计量 如动差法、夏皮罗-威尔克Shapiro-Wilk 法(W 检验) 、达戈斯提诺D′Agostino 法(D 检验) 、Shapiro-Francia 法(W′检验)。 正态分布的拟合优度检验 如皮尔逊χ2 检验 、对数似然比检验 、柯尔莫哥洛夫Kolmogorov-Smirov 法检验。 图示法(正态概率图Normal Probability plot) 如分位数图(Quantile Quantileplot ,简称QQ 图) 、百分位数(Percent Percent plot ,简称PP 图) 和稳定化概率图(Stablized Probability plot , 简称SP 图) 等。 统计软件中常用的正态性检验方法 用偏态系数和峰态系数检验数据正态性 偏态系数Sk,它用于检验不对称性;峰态系数Ku,它用于检验峰态。 S k= 0, K u= 0 时, 分布呈正态, S k&gt; 0 时, 分布呈正偏态,S k &lt; 0 时, 分布呈负偏态。适用条件：样本含量应大于200 用夏皮罗-威尔克(Shapiro-Wilk)法检验数据正态性 即W检验,1965 年提出,适用于样本含量n ≤50 时的正态性检;。 用达戈斯提诺(D′Agostino)法检验数据正态性 即D检验,1971提出,正态性D检验该方法效率高，是比较精确的正态检验法。 Shapiro-Francia 法 即W′检验,于1972 年提出,适用于50 &lt; n &lt; 100 时的正态性检验。 QQ图或PP图 散点聚集在固定直线的周围，可以认为数据资料近似服从正态分布 常用的规则： SPSS 规定:当样本含量3 ≤n ≤5000 时,结果以Shapiro - Wilk (W 检验) 为难,当样本含量n &gt; 5000 结果以Kolmogorov - Smirnov 为准。 SAS 规定:当样本含量n ≤2000 时,结果以Shapiro - Wilk (W 检验) 为准,当样本含量n &gt;2000 时,结果以Kolmogorov - Smirnov (D 检验) 为准。 正态性检验最常用的两种正态性检验是Shapiro-Wilk检验（K检验）和Kolmogorov-Smirnov检验（D检验）。两种测试都有相同的假设，即: H0 : 数据服从正态分布 H1 : 数据不服从正态分布 正态性检验推荐使用Shapiro-Wilk检验，因为它比Kolmogorov-Smirnov检验提供更好的效用。 在R中，正态性的Shapiro-Wilk检验可以通过函数shapiro.test()进行 library(nortest) shapiro.test(RBC)#W 检验,我们看到p-value&gt;0.05意味着我们不拒绝数据服从正态分布的原假设。 ## ## Shapiro-Wilk normality test ## ## data: RBC ## W = 0.98908, p-value = 0.3524 ad.test(RBC)#D 检验 ## ## Anderson-Darling normality test ## ## data: RBC ## A = 0.66115, p-value = 0.08262 注意的是，在实践中，正态检验通常被认为过于保守，因为对于大样本(n&gt;50)，对正态条件的一个 小偏差可能会导致违反正态判断的条件。由于正态性检验是一种假设检验，所以随着样本量的增加，其检测较小差 异的能力也会增加。因此，随着观测数的增加，Shapiro-Wilk检验变得非常敏感，甚至对正态性的一个 微小偏差也非常敏感。所以，根据正态性检验，数据不服从正态分布，尽管偏离正态分布的情况可以忽略不计，但数据 实际上服从正态分布。因此，通常情况下，正态性条件的验证是基于本文所介绍的所有方法的组合，即目视检验 (使用直方图和q-q图)和正式化检验(例如使用shapio-wilk检验)。 参考： 刘庆武,胡志艳，如何用SPSS、SAS 统计软件进行正态性检验，湘南学院学报(自然科学版)，2005 朱红兵，何丽娟，在SPSS10.0 中进行数据资料正态性检验的方法，首都体育学院学报，2004 "],["推论统计.html", "第 3 章 推论统计 3.1 统计量与标准误", " 第 3 章 推论统计 推论统计（或称统计推断，Statistical inference），指统计学中，研究如何根据样本数据去推断总体数量特征的方法。 它是在对样本数据进行描述的基础上，对统计总体的未知数量特征做出以概率形式表述的推断。更概括地说， 是在一段有限的时间内，通过对一个随机过程的观察来进行推断的。统计学中，统计推断与描述统计相对应。 推论统计(Statistical inferences)是借助抽样调查，从局部推断总体，以对不肯定的事物做出决策的一种统计。 有总体参数估计与假设检验两种。前者以一次性抽样实验为依据，对整个总体的某个数字特征做出估计。后者则是对 某种假设进行检验，根据计算结果推断所做的假设是否可以接受。如平均数、标准差、相关系数、回归系数等特征的 总体估计及差异显著性检验。推断统计的理论基础是概率论，它更多地需要借助抽样理论与方法。 ## 参数估计与假设检验 参数估计背后的思想是通过对从总体中抽取的样本进行统计显著性检验(如t检验)，为研究人员提供关于总体的统计推断。 最常用的就是t检验，其参数检验是基于W.S.Gosset的t统计量，该统计数据假设变量来自正态总体。t检验统计量中的总体均值是已知的。 这种分布称为t分布，其形状与正态分布类似，即钟形曲线。t检验用于检验那些样本小于30的样本比正态分布要好， 在大样本上做的和正态分布一样好。 假设检验(Hypothesis test)过去也叫做显著性检验(Significance test)，是利用小概率反证法思想，从问题的对立面(H0 )出发， 间接判断解决问题(H1 )是否成立。即在假设H0 成立的条件下，计算检验统计量(Test static)，然后根据P 值(P-value)来判断。 3.1 统计量与标准误 样本是总体的代表和反映，也是统计推断的依据，为了对总体的分布或数字特征进行各种统计推断，还需要对样本作加工处理， 把样本中应关心的事物和信息集中起来，针对不同的问题构造出样本的不同函数(如均值，方差，极差，标准差，中位数，众数等)，这种样本的函数我们称其为统计量。 样本统计量的标准差即为标准误(Stand error,SE)，反映了抽样的统计量的离散程度或误差大小。如样本均数的标准差也称为均数标准误 (Stand error of mean, SEM)，反映了样本均数的离散程度。 "],["t-分布.html", "第 4 章 t 分布", " 第 4 章 t 分布 "],["methods.html", "第 5 章 Methods", " 第 5 章 Methods We describe our methods in this chapter. "],["applications.html", "第 6 章 Applications 6.1 Example one 6.2 Example two", " 第 6 章 Applications Some significant applications are demonstrated in this chapter. 6.1 Example one 6.2 Example two "],["final-words.html", "第 7 章 Final Words", " 第 7 章 Final Words We have finished a nice book. "],["references.html", "References", " References "]]
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 4 章 t 分布 | 医学统计学与R语言</title>
+  <meta name="description" content="第 4 章 t 分布 | 医学统计学与R语言" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 4 章 t 分布 | 医学统计学与R语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 4 章 t 分布 | 医学统计学与R语言" />
+  
+  
+  
+
+<meta name="author" content="刘向" />
+
+
+<meta name="date" content="2021-07-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="推论统计.html"/>
+<link rel="next" href="methods.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 简介</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#软件准备"><i class="fa fa-check"></i><b>1.1</b> 软件准备</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i><b>1.2</b> 致谢</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#声明"><i class="fa fa-check"></i><b>1.3</b> 声明</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="描述.html"><a href="描述.html"><i class="fa fa-check"></i><b>2</b> 计量资料的统计描述</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="描述.html"><a href="描述.html#数据录入"><i class="fa fa-check"></i><b>2.1</b> 数据录入</a></li>
+<li class="chapter" data-level="2.2" data-path="描述.html"><a href="描述.html#计算极差"><i class="fa fa-check"></i><b>2.2</b> 计算极差</a></li>
+<li class="chapter" data-level="2.3" data-path="描述.html"><a href="描述.html#计算标准差及四分位数间距"><i class="fa fa-check"></i><b>2.3</b> 计算标准差及四分位数间距</a></li>
+<li class="chapter" data-level="2.4" data-path="描述.html"><a href="描述.html#计算频数分布"><i class="fa fa-check"></i><b>2.4</b> 计算频数分布</a></li>
+<li class="chapter" data-level="2.5" data-path="描述.html"><a href="描述.html#描述性统计的度量"><i class="fa fa-check"></i><b>2.5</b> 描述性统计的度量</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="描述.html"><a href="描述.html#算术平均值"><i class="fa fa-check"></i><b>2.5.1</b> 算术平均值</a></li>
+<li class="chapter" data-level="2.5.2" data-path="描述.html"><a href="描述.html#几何平均值"><i class="fa fa-check"></i><b>2.5.2</b> 几何平均值</a></li>
+<li class="chapter" data-level="2.5.3" data-path="描述.html"><a href="描述.html#变异系数"><i class="fa fa-check"></i><b>2.5.3</b> 变异系数</a></li>
+<li class="chapter" data-level="2.5.4" data-path="描述.html"><a href="描述.html#众数及排序"><i class="fa fa-check"></i><b>2.5.4</b> 众数及排序</a></li>
+<li class="chapter" data-level="2.5.5" data-path="描述.html"><a href="描述.html#其他描述性统计"><i class="fa fa-check"></i><b>2.5.5</b> 其他描述性统计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="描述.html"><a href="描述.html#正态分布和标准正态分布"><i class="fa fa-check"></i><b>2.6</b> 正态分布和标准正态分布</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="描述.html"><a href="描述.html#概率密度函数dnorm"><i class="fa fa-check"></i><b>2.6.1</b> 概率密度函数dnorm()</a></li>
+<li class="chapter" data-level="2.6.2" data-path="描述.html"><a href="描述.html#概率累积分布函数pnorm"><i class="fa fa-check"></i><b>2.6.2</b> 概率累积分布函数pnorm()</a></li>
+<li class="chapter" data-level="2.6.3" data-path="描述.html"><a href="描述.html#正态分位函数qnorm"><i class="fa fa-check"></i><b>2.6.3</b> 正态分位函数qnorm()</a></li>
+<li class="chapter" data-level="2.6.4" data-path="描述.html"><a href="描述.html#生成正态分布函数rnorm"><i class="fa fa-check"></i><b>2.6.4</b> 生成正态分布函数rnorm()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="描述.html"><a href="描述.html#正态性检验"><i class="fa fa-check"></i><b>2.7</b> 正态性检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="推论统计.html"><a href="推论统计.html"><i class="fa fa-check"></i><b>3</b> 推论统计</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="推论统计.html"><a href="推论统计.html#统计量与标准误"><i class="fa fa-check"></i><b>3.1</b> 统计量与标准误</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="t-分布.html"><a href="t-分布.html"><i class="fa fa-check"></i><b>4</b> t 分布</a></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Methods</a></li>
+<li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> Applications</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">医学统计学与R语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="t-分布" class="section level1" number="4">
+<h1><span class="header-section-number">第 4 章</span> t 分布</h1>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="推论统计.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/02-总体均数的估计与假设检验.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R语言与医学统计学.pdf", "R语言与医学统计学.epub"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 2 章 计量资料的统计描述 | 医学统计学与R语言</title>
+  <meta name="description" content="第 2 章 计量资料的统计描述 | 医学统计学与R语言" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 2 章 计量资料的统计描述 | 医学统计学与R语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 2 章 计量资料的统计描述 | 医学统计学与R语言" />
+  
+  
+  
+
+<meta name="author" content="刘向" />
+
+
+<meta name="date" content="2021-07-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="推论统计.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 简介</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#软件准备"><i class="fa fa-check"></i><b>1.1</b> 软件准备</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i><b>1.2</b> 致谢</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#声明"><i class="fa fa-check"></i><b>1.3</b> 声明</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="描述.html"><a href="描述.html"><i class="fa fa-check"></i><b>2</b> 计量资料的统计描述</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="描述.html"><a href="描述.html#数据录入"><i class="fa fa-check"></i><b>2.1</b> 数据录入</a></li>
+<li class="chapter" data-level="2.2" data-path="描述.html"><a href="描述.html#计算极差"><i class="fa fa-check"></i><b>2.2</b> 计算极差</a></li>
+<li class="chapter" data-level="2.3" data-path="描述.html"><a href="描述.html#计算标准差及四分位数间距"><i class="fa fa-check"></i><b>2.3</b> 计算标准差及四分位数间距</a></li>
+<li class="chapter" data-level="2.4" data-path="描述.html"><a href="描述.html#计算频数分布"><i class="fa fa-check"></i><b>2.4</b> 计算频数分布</a></li>
+<li class="chapter" data-level="2.5" data-path="描述.html"><a href="描述.html#描述性统计的度量"><i class="fa fa-check"></i><b>2.5</b> 描述性统计的度量</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="描述.html"><a href="描述.html#算术平均值"><i class="fa fa-check"></i><b>2.5.1</b> 算术平均值</a></li>
+<li class="chapter" data-level="2.5.2" data-path="描述.html"><a href="描述.html#几何平均值"><i class="fa fa-check"></i><b>2.5.2</b> 几何平均值</a></li>
+<li class="chapter" data-level="2.5.3" data-path="描述.html"><a href="描述.html#变异系数"><i class="fa fa-check"></i><b>2.5.3</b> 变异系数</a></li>
+<li class="chapter" data-level="2.5.4" data-path="描述.html"><a href="描述.html#众数及排序"><i class="fa fa-check"></i><b>2.5.4</b> 众数及排序</a></li>
+<li class="chapter" data-level="2.5.5" data-path="描述.html"><a href="描述.html#其他描述性统计"><i class="fa fa-check"></i><b>2.5.5</b> 其他描述性统计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="描述.html"><a href="描述.html#正态分布和标准正态分布"><i class="fa fa-check"></i><b>2.6</b> 正态分布和标准正态分布</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="描述.html"><a href="描述.html#概率密度函数dnorm"><i class="fa fa-check"></i><b>2.6.1</b> 概率密度函数dnorm()</a></li>
+<li class="chapter" data-level="2.6.2" data-path="描述.html"><a href="描述.html#概率累积分布函数pnorm"><i class="fa fa-check"></i><b>2.6.2</b> 概率累积分布函数pnorm()</a></li>
+<li class="chapter" data-level="2.6.3" data-path="描述.html"><a href="描述.html#正态分位函数qnorm"><i class="fa fa-check"></i><b>2.6.3</b> 正态分位函数qnorm()</a></li>
+<li class="chapter" data-level="2.6.4" data-path="描述.html"><a href="描述.html#生成正态分布函数rnorm"><i class="fa fa-check"></i><b>2.6.4</b> 生成正态分布函数rnorm()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="描述.html"><a href="描述.html#正态性检验"><i class="fa fa-check"></i><b>2.7</b> 正态性检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="推论统计.html"><a href="推论统计.html"><i class="fa fa-check"></i><b>3</b> 推论统计</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="推论统计.html"><a href="推论统计.html#统计量与标准误"><i class="fa fa-check"></i><b>3.1</b> 统计量与标准误</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="t-分布.html"><a href="t-分布.html"><i class="fa fa-check"></i><b>4</b> t 分布</a></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Methods</a></li>
+<li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> Applications</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">医学统计学与R语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="描述" class="section level1" number="2">
+<h1><span class="header-section-number">第 2 章</span> 计量资料的统计描述</h1>
+<p>描述统计学(广义上的描述统计学,Descriptive statistics)是统计学的一个分支，旨在概括、描述和呈现一系列值或数据集(比如对单样本的分析)。 由于难以识别数据中的任何模式，没有任何准备或没有任何汇总度量的长系列值通常无法提供信息。</p>
+<p>描述统计通常是统计分析的第一步，也是统计分析的重要组成部分。它允许通过检测潜在的异常值(即似乎与其他数据分离的数据点)、 收集或编码错误来检查数据的质量。它还有助于“理解”数据，如果表述得当，描述性统计是进一步分析的一个很好的起点。</p>
+<p>位置与离散度量是两种不同的总结数据的测量方法。其中一些给出了关于数据位置的理解，另一些给出了关于数据分散性的理解。 在实践中，这两种度量方法经常一起使用，以便以最简洁和完整的方式总结数据。</p>
+<p>位置度量允许查看数据位于“何处”，围绕哪个值。换句话说，位置度量可了解什么是总体趋势，即数据整体的“位置”。 它主要包括：平均值，中位数，四分位数，第三、四分位数，众数，最大值，最小值等。</p>
+<p>常见的离散度量，它有助于了解离散度和数据的可变性(在何种程度上分布被压缩或拉伸):范围，标准偏差，方差，四分位间距，变异系数。</p>
+<div id="数据录入" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> 数据录入</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="描述.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span> (<span class="at">warn =</span> <span class="sc">-</span><span class="dv">1</span>)<span class="co">#不显示警告信息</span></span>
+<span id="cb5-2"><a href="描述.html#cb5-2" aria-hidden="true" tabindex="-1"></a>RBC <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">3.96</span>,<span class="fl">4.23</span>,<span class="fl">4.42</span>,<span class="fl">3.59</span>,<span class="fl">5.12</span>,<span class="fl">4.02</span>,<span class="fl">4.32</span>,<span class="fl">3.72</span>,<span class="fl">4.76</span>,<span class="fl">4.16</span>,<span class="fl">4.61</span>,<span class="fl">4.26</span>,</span>
+<span id="cb5-3"><a href="描述.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fl">3.77</span>,<span class="fl">4.20</span>,<span class="fl">4.36</span>,<span class="fl">3.07</span>,<span class="fl">4.89</span>,<span class="fl">3.97</span>,<span class="fl">4.28</span>,<span class="fl">3.64</span>,<span class="fl">4.66</span>,<span class="fl">4.04</span>,<span class="fl">4.55</span>,<span class="fl">4.25</span>,</span>
+<span id="cb5-4"><a href="描述.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fl">4.63</span>,<span class="fl">3.91</span>,<span class="fl">4.41</span>,<span class="fl">3.52</span>,<span class="fl">5.03</span>,<span class="fl">4.01</span>,<span class="fl">4.30</span>,<span class="fl">4.19</span>,<span class="fl">4.75</span>,<span class="fl">4.14</span>,<span class="fl">4.57</span>,<span class="fl">4.26</span>,</span>
+<span id="cb5-5"><a href="描述.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fl">4.56</span>,<span class="fl">3.79</span>,<span class="fl">3.89</span>,<span class="fl">4.21</span>,<span class="fl">4.95</span>,<span class="fl">3.98</span>,<span class="fl">4.29</span>,<span class="fl">3.67</span>,<span class="fl">4.69</span>,<span class="fl">4.12</span>,<span class="fl">4.56</span>,<span class="fl">4.26</span>,</span>
+<span id="cb5-6"><a href="描述.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fl">4.66</span>,<span class="fl">4.28</span>,<span class="fl">3.83</span>,<span class="fl">4.20</span>,<span class="fl">5.24</span>,<span class="fl">4.02</span>,<span class="fl">4.33</span>,<span class="fl">3.76</span>,<span class="fl">4.81</span>,<span class="fl">4.17</span>,<span class="fl">3.96</span>,<span class="fl">3.27</span>,</span>
+<span id="cb5-7"><a href="描述.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fl">4.61</span>,<span class="fl">4.26</span>,<span class="fl">3.96</span>,<span class="fl">4.23</span>,<span class="fl">3.76</span>,<span class="fl">4.01</span>,<span class="fl">4.29</span>,<span class="fl">3.67</span>,<span class="fl">3.39</span>,<span class="fl">4.12</span>,<span class="fl">4.27</span>,<span class="fl">3.61</span>,</span>
+<span id="cb5-8"><a href="描述.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fl">4.98</span>,<span class="fl">4.24</span>,<span class="fl">3.83</span>,<span class="fl">4.20</span>,<span class="fl">3.71</span>,<span class="fl">4.03</span>,<span class="fl">4.34</span>,<span class="fl">4.69</span>,<span class="fl">3.62</span>,<span class="fl">4.18</span>,<span class="fl">4.26</span>,<span class="fl">4.36</span>,</span>
+<span id="cb5-9"><a href="描述.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fl">5.28</span>,<span class="fl">4.21</span>,<span class="fl">4.42</span>,<span class="fl">4.36</span>,<span class="fl">3.66</span>,<span class="fl">4.02</span>,<span class="fl">4.31</span>,<span class="fl">4.83</span>,<span class="fl">3.59</span>,<span class="fl">3.97</span>,<span class="fl">3.96</span>,<span class="fl">4.49</span>,</span>
+<span id="cb5-10"><a href="描述.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fl">5.11</span>,<span class="fl">4.20</span>,<span class="fl">4.36</span>,<span class="fl">4.54</span>,<span class="fl">3.72</span>,<span class="fl">3.97</span>,<span class="fl">4.28</span>,<span class="fl">4.76</span>,<span class="fl">3.21</span>,<span class="fl">4.04</span>,<span class="fl">4.56</span>,<span class="fl">4.25</span>,</span>
+<span id="cb5-11"><a href="描述.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fl">4.92</span>,<span class="fl">4.23</span>,<span class="fl">4.47</span>,<span class="fl">3.60</span>,<span class="fl">5.23</span>,<span class="fl">4.02</span>,<span class="fl">4.32</span>,<span class="fl">4.68</span>,<span class="fl">4.76</span>,<span class="fl">3.69</span>,<span class="fl">4.61</span>,<span class="fl">4.26</span>,</span>
+<span id="cb5-12"><a href="描述.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fl">3.89</span>,<span class="fl">4.21</span>,<span class="fl">4.36</span>,<span class="fl">3.42</span>,<span class="fl">5.01</span>,<span class="fl">4.01</span>,<span class="fl">4.29</span>,<span class="fl">3.68</span>,<span class="fl">4.71</span>,<span class="fl">4.13</span>,<span class="fl">4.57</span>,<span class="fl">4.26</span>,</span>
+<span id="cb5-13"><a href="描述.html#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fl">4.03</span>,<span class="fl">5.46</span>,<span class="fl">4.16</span>,<span class="fl">3.64</span>,<span class="fl">4.16</span>,<span class="fl">3.76</span>)<span class="co">#为方便使用数据，直接以向量方式导入</span></span>
+<span id="cb5-14"><a href="描述.html#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="描述.html#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).</span></span>
+<span id="cb5-16"><a href="描述.html#cb5-16" aria-hidden="true" tabindex="-1"></a>matrix_RBC <span class="ot">&lt;-</span> <span class="fu">matrix</span>(RBC,<span class="at">ncol=</span><span class="dv">11</span>,<span class="at">byrow =</span> T)<span class="co">#转化成矩阵</span></span>
+<span id="cb5-17"><a href="描述.html#cb5-17" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb5-18"><a href="描述.html#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(matrix_RBC,<span class="dv">10</span>), <span class="at">caption =</span> <span class="st">&#39;某医院用随机抽样的方法检测了138名正常成年女子的红细胞数目(RBC，x10^12/L )&#39;</span>,</span>
+<span id="cb5-19"><a href="描述.html#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span>)<span class="co">#用表格方式查看矩阵</span></span></code></pre></div>
+<table>
+<caption><span id="tab:表1">表 2.1: </span>某医院用随机抽样的方法检测了138名正常成年女子的红细胞数目(RBC，x10^12/L )</caption>
+<tbody>
+<tr class="odd">
+<td align="right">3.96</td>
+<td align="right">4.23</td>
+<td align="right">4.42</td>
+<td align="right">3.59</td>
+<td align="right">5.12</td>
+<td align="right">4.02</td>
+<td align="right">4.32</td>
+<td align="right">3.72</td>
+<td align="right">4.76</td>
+<td align="right">4.16</td>
+<td align="right">4.61</td>
+</tr>
+<tr class="even">
+<td align="right">4.26</td>
+<td align="right">3.77</td>
+<td align="right">4.20</td>
+<td align="right">4.36</td>
+<td align="right">3.07</td>
+<td align="right">4.89</td>
+<td align="right">3.97</td>
+<td align="right">4.28</td>
+<td align="right">3.64</td>
+<td align="right">4.66</td>
+<td align="right">4.04</td>
+</tr>
+<tr class="odd">
+<td align="right">4.55</td>
+<td align="right">4.25</td>
+<td align="right">4.63</td>
+<td align="right">3.91</td>
+<td align="right">4.41</td>
+<td align="right">3.52</td>
+<td align="right">5.03</td>
+<td align="right">4.01</td>
+<td align="right">4.30</td>
+<td align="right">4.19</td>
+<td align="right">4.75</td>
+</tr>
+<tr class="even">
+<td align="right">4.14</td>
+<td align="right">4.57</td>
+<td align="right">4.26</td>
+<td align="right">4.56</td>
+<td align="right">3.79</td>
+<td align="right">3.89</td>
+<td align="right">4.21</td>
+<td align="right">4.95</td>
+<td align="right">3.98</td>
+<td align="right">4.29</td>
+<td align="right">3.67</td>
+</tr>
+<tr class="odd">
+<td align="right">4.69</td>
+<td align="right">4.12</td>
+<td align="right">4.56</td>
+<td align="right">4.26</td>
+<td align="right">4.66</td>
+<td align="right">4.28</td>
+<td align="right">3.83</td>
+<td align="right">4.20</td>
+<td align="right">5.24</td>
+<td align="right">4.02</td>
+<td align="right">4.33</td>
+</tr>
+<tr class="even">
+<td align="right">3.76</td>
+<td align="right">4.81</td>
+<td align="right">4.17</td>
+<td align="right">3.96</td>
+<td align="right">3.27</td>
+<td align="right">4.61</td>
+<td align="right">4.26</td>
+<td align="right">3.96</td>
+<td align="right">4.23</td>
+<td align="right">3.76</td>
+<td align="right">4.01</td>
+</tr>
+<tr class="odd">
+<td align="right">4.29</td>
+<td align="right">3.67</td>
+<td align="right">3.39</td>
+<td align="right">4.12</td>
+<td align="right">4.27</td>
+<td align="right">3.61</td>
+<td align="right">4.98</td>
+<td align="right">4.24</td>
+<td align="right">3.83</td>
+<td align="right">4.20</td>
+<td align="right">3.71</td>
+</tr>
+<tr class="even">
+<td align="right">4.03</td>
+<td align="right">4.34</td>
+<td align="right">4.69</td>
+<td align="right">3.62</td>
+<td align="right">4.18</td>
+<td align="right">4.26</td>
+<td align="right">4.36</td>
+<td align="right">5.28</td>
+<td align="right">4.21</td>
+<td align="right">4.42</td>
+<td align="right">4.36</td>
+</tr>
+<tr class="odd">
+<td align="right">3.66</td>
+<td align="right">4.02</td>
+<td align="right">4.31</td>
+<td align="right">4.83</td>
+<td align="right">3.59</td>
+<td align="right">3.97</td>
+<td align="right">3.96</td>
+<td align="right">4.49</td>
+<td align="right">5.11</td>
+<td align="right">4.20</td>
+<td align="right">4.36</td>
+</tr>
+<tr class="even">
+<td align="right">4.54</td>
+<td align="right">3.72</td>
+<td align="right">3.97</td>
+<td align="right">4.28</td>
+<td align="right">4.76</td>
+<td align="right">3.21</td>
+<td align="right">4.04</td>
+<td align="right">4.56</td>
+<td align="right">4.25</td>
+<td align="right">4.92</td>
+<td align="right">4.23</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="计算极差" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> 计算极差</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="描述.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(RBC)  <span class="co">#返回最小值和最大值</span></span></code></pre></div>
+<pre><code>## [1] 3.07 5.46</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="描述.html#cb8-1" aria-hidden="true" tabindex="-1"></a>rge<span class="ot">&lt;-</span><span class="fu">max</span>(RBC)<span class="sc">-</span><span class="fu">min</span>(RBC)<span class="co">#计算极差</span></span>
+<span id="cb8-2"><a href="描述.html#cb8-2" aria-hidden="true" tabindex="-1"></a>rge</span></code></pre></div>
+<pre><code>## [1] 2.39</code></pre>
+</div>
+<div id="计算标准差及四分位数间距" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> 计算标准差及四分位数间距</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="描述.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sd()计算标准差，quantile()计算分位数</span></span>
+<span id="cb10-2"><a href="描述.html#cb10-2" aria-hidden="true" tabindex="-1"></a>sd<span class="ot">&lt;-</span><span class="fu">sd</span>(RBC)</span>
+<span id="cb10-3"><a href="描述.html#cb10-3" aria-hidden="true" tabindex="-1"></a>sd</span></code></pre></div>
+<pre><code>## [1] 0.4457298</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="描述.html#cb12-1" aria-hidden="true" tabindex="-1"></a>quan<span class="ot">&lt;-</span><span class="fu">quantile</span>(RBC,<span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.75</span>))</span>
+<span id="cb12-2"><a href="描述.html#cb12-2" aria-hidden="true" tabindex="-1"></a>quan</span></code></pre></div>
+<pre><code>##    25%    75% 
+## 3.9625 4.5275</code></pre>
+</div>
+<div id="计算频数分布" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> 计算频数分布</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="描述.html#cb14-1" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span>  <span class="fu">seq</span>(<span class="fu">min</span>(RBC), <span class="fu">max</span>(RBC), <span class="at">length.out =</span> <span class="dv">8</span>)</span>
+<span id="cb14-2"><a href="描述.html#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="描述.html#cb14-3" aria-hidden="true" tabindex="-1"></a>RBC_cut <span class="ot">&lt;-</span> <span class="fu">cut</span>(RBC, breaks, <span class="at">right=</span>T,<span class="at">include.lowest=</span>T)</span>
+<span id="cb14-4"><a href="描述.html#cb14-4" aria-hidden="true" tabindex="-1"></a>RBC_freq <span class="ot">&lt;-</span> <span class="fu">table</span>(RBC_cut)</span>
+<span id="cb14-5"><a href="描述.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(RBC_cut)</span></code></pre></div>
+<pre><code>## RBC_cut
+## [3.07,3.41] (3.41,3.75] (3.75,4.09] (4.09,4.44] (4.44,4.78] (4.78,5.12] 
+##           4          17          29          51          23           9 
+## (5.12,5.46] 
+##           5</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="描述.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb16-2"><a href="描述.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="描述.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="描述.html#cb16-4" aria-hidden="true" tabindex="-1"></a>hist_RBC <span class="ot">&lt;-</span>  <span class="fu">ggplot</span>(<span class="fu">as.data.frame</span>(RBC), <span class="fu">aes</span>(<span class="at">x=</span>RBC)) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="描述.html#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&quot;#69b3a2&quot;</span>,<span class="at">binwidth=</span><span class="fl">0.34</span>) </span>
+<span id="cb16-6"><a href="描述.html#cb16-6" aria-hidden="true" tabindex="-1"></a>hist_RBC</span></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-10"></span>
+<img src="R语言与医学统计学_files/figure-html/unnamed-chunk-10-1.png" alt="红细胞分布直方图" width="672" />
+<p class="caption">
+图 2.1: 红细胞分布直方图
+</p>
+</div>
+</div>
+<div id="描述性统计的度量" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> 描述性统计的度量</h2>
+<div id="算术平均值" class="section level3" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> 算术平均值</h3>
+<p>算术均数简称均值(mean),用于反映组呈对称分布的变量值在数量上的平均水平。</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="描述.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(RBC)</span></code></pre></div>
+<pre><code>## [1] 4.227029</code></pre>
+</div>
+<div id="几何平均值" class="section level3" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> 几何平均值</h3>
+<p>几何均数(geometric mean)可用于反映一组经 对数转换 后呈对称分布的变量值在数量上的平均水平。</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="描述.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(RBC)))</span></code></pre></div>
+<pre><code>## [1] 4.203676</code></pre>
+</div>
+<div id="变异系数" class="section level3" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> 变异系数</h3>
+<p>变异系数(Cefficient of variation，CV)，当进行两个或多个资料变异程度的比较时，如果度量单位与平均数相同， 可以直接利用标准差来比较。如果单位和（或）平均数不同时，比较其变异程度就不能采用标准差， 而需采用标准差与平均数的比值（相对值）来比较。标准差与平均数的比值称为变异系数。 变异系数可以消除单位和（或）平均数不同对两个或多个资料变异程度比较的影响。</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="描述.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(RBC)<span class="sc">/</span><span class="fu">mean</span>(RBC)<span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<pre><code>## [1] 10.54475</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="描述.html#cb23-1" aria-hidden="true" tabindex="-1"></a>raster<span class="sc">::</span><span class="fu">cv</span>(RBC)</span></code></pre></div>
+<pre><code>## [1] 10.54475</code></pre>
+</div>
+<div id="众数及排序" class="section level3" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> 众数及排序</h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="描述.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(RBC, <span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="co">#排序</span></span></code></pre></div>
+<pre><code>##   [1] 5.46 5.28 5.24 5.23 5.12 5.11 5.03 5.01 4.98 4.95 4.92 4.89 4.83 4.81 4.76
+##  [16] 4.76 4.76 4.75 4.71 4.69 4.69 4.68 4.66 4.66 4.63 4.61 4.61 4.61 4.57 4.57
+##  [31] 4.56 4.56 4.56 4.55 4.54 4.49 4.47 4.42 4.42 4.41 4.36 4.36 4.36 4.36 4.36
+##  [46] 4.34 4.33 4.32 4.32 4.31 4.30 4.29 4.29 4.29 4.28 4.28 4.28 4.27 4.26 4.26
+##  [61] 4.26 4.26 4.26 4.26 4.26 4.25 4.25 4.24 4.23 4.23 4.23 4.21 4.21 4.21 4.20
+##  [76] 4.20 4.20 4.20 4.19 4.18 4.17 4.16 4.16 4.16 4.14 4.13 4.12 4.12 4.04 4.04
+##  [91] 4.03 4.03 4.02 4.02 4.02 4.02 4.01 4.01 4.01 3.98 3.97 3.97 3.97 3.96 3.96
+## [106] 3.96 3.96 3.91 3.89 3.89 3.83 3.83 3.79 3.77 3.76 3.76 3.76 3.72 3.72 3.71
+## [121] 3.69 3.68 3.67 3.67 3.66 3.64 3.64 3.62 3.61 3.60 3.59 3.59 3.52 3.42 3.39
+## [136] 3.27 3.21 3.07</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="描述.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(RBC), <span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="co">#众数</span></span></code></pre></div>
+<pre><code>## RBC
+## 4.26 4.36 3.96 4.02  4.2 3.76 3.97 4.01 4.16 4.21 4.23 4.28 4.29 4.56 4.61 4.76 
+##    7    5    4    4    4    3    3    3    3    3    3    3    3    3    3    3 
+## 3.59 3.64 3.67 3.72 3.83 3.89 4.03 4.04 4.12 4.25 4.32 4.42 4.57 4.66 4.69 3.07 
+##    2    2    2    2    2    2    2    2    2    2    2    2    2    2    2    1 
+## 3.21 3.27 3.39 3.42 3.52  3.6 3.61 3.62 3.66 3.68 3.69 3.71 3.77 3.79 3.91 3.98 
+##    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1 
+## 4.13 4.14 4.17 4.18 4.19 4.24 4.27  4.3 4.31 4.33 4.34 4.41 4.47 4.49 4.54 4.55 
+##    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1 
+## 4.63 4.68 4.71 4.75 4.81 4.83 4.89 4.92 4.95 4.98 5.01 5.03 5.11 5.12 5.23 5.24 
+##    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1 
+## 5.28 5.46 
+##    1    1</code></pre>
+</div>
+<div id="其他描述性统计" class="section level3" number="2.5.5">
+<h3><span class="header-section-number">2.5.5</span> 其他描述性统计</h3>
+<p>R语言中，可以使用summary()来计算最小，第1四分位数，中位数，平均值，第3，4分位数和最大值的数据集的所有数值变量。</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="描述.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(RBC)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   3.070   3.962   4.230   4.227   4.527   5.460</code></pre>
+</div>
+</div>
+<div id="正态分布和标准正态分布" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> 正态分布和标准正态分布</h2>
+<p>正态分布（Normal distribution）又名高斯分布（Gaussian distribution），是一个非常常见的连续概率分布。 正态分布在统计学上十分重要，经常用在自然和社会科学来代表一个不明的随机变量。 可以说，弄懂正态分布是灵活运用统计学中各种假设检验方法、理解p值，均数置信区间的前提。 R包含有很丰富的正态分布相关的函数功能， 比如概率密度函数dnorm()，概率累积分布函数pnorm()，正态分位函数qnorm()和用来生成特定正态分布数据序列的函数rnorm()， 以及检测数据时候符合正态分布的方法，这里主要做下面一些介绍。</p>
+<div id="概率密度函数dnorm" class="section level3" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> 概率密度函数dnorm()</h3>
+<p>概率密度函数（Probability density function），R中即为dnorm()， 它可以给出了指定均值和标准差下每个点的概率分布的高度， 越高就代表着这个点/区间的概率越密集(大)。概率密度函数有时也被称为概率分布函数，但这种称法可能会和累积分布函数pnorm()混淆。</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="描述.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#在-10~10区间等分的 100个 数据集x</span></span>
+<span id="cb31-2"><a href="描述.html#cb31-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">by =</span> .<span class="dv">1</span>)</span>
+<span id="cb31-3"><a href="描述.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#创建一个均值是2.5，标准差是0.5正态分布 y</span></span>
+<span id="cb31-4"><a href="描述.html#cb31-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="fl">2.5</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb31-5"><a href="描述.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#将 y 中的落在x数据集上的数据画出来</span></span>
+<span id="cb31-6"><a href="描述.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">pch=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-16"></span>
+<img src="R语言与医学统计学_files/figure-html/unnamed-chunk-16-1.png" alt="概率密度函数示例" width="672" />
+<p class="caption">
+图 2.2: 概率密度函数示例
+</p>
+</div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="描述.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#也可以使用ggpubr包中的ggdensity函数直接画概率密度曲线</span></span>
+<span id="cb32-2"><a href="描述.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb32-3"><a href="描述.html#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="描述.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdensity</span>(RBC)</span></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-17"></span>
+<img src="R语言与医学统计学_files/figure-html/unnamed-chunk-17-1.png" alt="ggpubr概率密度函数示例" width="672" />
+<p class="caption">
+图 2.3: ggpubr概率密度函数示例
+</p>
+</div>
+</div>
+<div id="概率累积分布函数pnorm" class="section level3" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> 概率累积分布函数pnorm()</h3>
+<p>累积分布函数（Cumulative Distribution Function），R中即为pnorm()， 又叫分布函数，是概率密度函数的积分，能完整描述一个实随机变量X的概率分布，它给出一个正态分布中小于一个给定数字的累计概率(即指定定点的左边范围的曲线面积)。</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="描述.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#在-10~10区间等分的 40个 数据集x</span></span>
+<span id="cb33-2"><a href="描述.html#cb33-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">by =</span> .<span class="dv">5</span>)</span>
+<span id="cb33-3"><a href="描述.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#创建一个均值是2.5，标准差是0.5正态分布 y</span></span>
+<span id="cb33-4"><a href="描述.html#cb33-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(x, <span class="at">mean =</span> <span class="fl">2.5</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb33-5"><a href="描述.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co">#将 y 中的落在x数据集上的累计概率画出来</span></span>
+<span id="cb33-6"><a href="描述.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">pch=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-18"></span>
+<img src="R语言与医学统计学_files/figure-html/unnamed-chunk-18-1.png" alt="累积分布密度函数示例" width="672" />
+<p class="caption">
+图 2.4: 累积分布密度函数示例
+</p>
+</div>
+</div>
+<div id="正态分位函数qnorm" class="section level3" number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> 正态分位函数qnorm()</h3>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="描述.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#在0~1区间等分的 50个 数据集x</span></span>
+<span id="cb34-2"><a href="描述.html#cb34-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.02</span>)</span>
+<span id="cb34-3"><a href="描述.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">#创建一个均值是2，标准差是1正态分布 y</span></span>
+<span id="cb34-4"><a href="描述.html#cb34-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(x, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb34-5"><a href="描述.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">#将 y 中的落在x数据集上的数字画出来</span></span>
+<span id="cb34-6"><a href="描述.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">pch=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-19"></span>
+<img src="R语言与医学统计学_files/figure-html/unnamed-chunk-19-1.png" alt="正态分布函数示例" width="672" />
+<p class="caption">
+图 2.5: 正态分布函数示例
+</p>
+</div>
+</div>
+<div id="生成正态分布函数rnorm" class="section level3" number="2.6.4">
+<h3><span class="header-section-number">2.6.4</span> 生成正态分布函数rnorm()</h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="描述.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#设置随机种子，便于重复后续的数据选取</span></span>
+<span id="cb35-2"><a href="描述.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">50</span>)</span>
+<span id="cb35-3"><a href="描述.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#在标准正态分布中随机选取50个数据</span></span>
+<span id="cb35-4"><a href="描述.html#cb35-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>)</span>
+<span id="cb35-5"><a href="描述.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#对选区的数据绘制频率分布图</span></span>
+<span id="cb35-6"><a href="描述.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(y,<span class="at">col=</span><span class="st">&quot;#A8D6FF&quot;</span>,<span class="at">labels =</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-20"></span>
+<img src="R语言与医学统计学_files/figure-html/unnamed-chunk-20-1.png" alt="正态分布图" width="672" />
+<p class="caption">
+图 2.6: 正态分布图
+</p>
+</div>
+</div>
+</div>
+<div id="正态性检验" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> 正态性检验</h2>
+<p>许多计量资料的分析方法要求数据分布是正态或近似正态，因此对原始独立测定数据进行正态性检验是十分必要的。通过绘制数据的频数分布直方图来定性地判断数据分布正态性。
+常用正态性检验方法
+1.<a href="https://blog.csdn.net/u013524655/article/details/41053105?utm_medium=distribute.pc_relevant.none-task-blog-baidulandingword-7&amp;spm=1001.2101.3001.4242">用R语言做正态分布检验</a>
+正态性检验主要有三类方法:</p>
+<p>计算综合统计量 如动差法、夏皮罗-威尔克Shapiro-Wilk 法(W 检验) 、达戈斯提诺D′Agostino 法(D 检验) 、Shapiro-Francia 法(W′检验)。</p>
+<p>正态分布的拟合优度检验</p>
+<p>如皮尔逊χ2 检验 、对数似然比检验 、柯尔莫哥洛夫Kolmogorov-Smirov 法检验。</p>
+<p>图示法(正态概率图Normal Probability plot)</p>
+<p>如分位数图(Quantile Quantileplot ,简称QQ 图) 、百分位数(Percent Percent plot ,简称PP 图) 和稳定化概率图(Stablized Probability plot , 简称SP 图) 等。</p>
+<p>统计软件中常用的正态性检验方法</p>
+<p>用偏态系数和峰态系数检验数据正态性</p>
+<p>偏态系数Sk,它用于检验不对称性;峰态系数Ku,它用于检验峰态。 S k= 0, K u= 0 时, 分布呈正态, S k&gt; 0 时, 分布呈正偏态,S k &lt; 0 时, 分布呈负偏态。适用条件：样本含量应大于200</p>
+<p>用夏皮罗-威尔克(Shapiro-Wilk)法检验数据正态性 即W检验,1965 年提出,适用于样本含量n ≤50 时的正态性检;。</p>
+<p>用达戈斯提诺(D′Agostino)法检验数据正态性 即D检验,1971提出,正态性D检验该方法效率高，是比较精确的正态检验法。</p>
+<p>Shapiro-Francia 法 即W′检验,于1972 年提出,适用于50 &lt; n &lt; 100 时的正态性检验。</p>
+<p>QQ图或PP图 散点聚集在固定直线的周围，可以认为数据资料近似服从正态分布</p>
+<p>常用的规则：</p>
+<p>SPSS 规定:当样本含量3 ≤n ≤5000 时,结果以Shapiro - Wilk (W 检验) 为难,当样本含量n &gt; 5000 结果以Kolmogorov - Smirnov 为准。</p>
+<p>SAS 规定:当样本含量n ≤2000 时,结果以Shapiro - Wilk (W 检验) 为准,当样本含量n &gt;2000 时,结果以Kolmogorov - Smirnov (D 检验) 为准。</p>
+<p>正态性检验最常用的两种正态性检验是Shapiro-Wilk检验（K检验）和Kolmogorov-Smirnov检验（D检验）。两种测试都有相同的假设，即:</p>
+<p>H0 : 数据服从正态分布</p>
+<p>H1 : 数据不服从正态分布</p>
+<p>正态性检验推荐使用Shapiro-Wilk检验，因为它比Kolmogorov-Smirnov检验提供更好的效用。 在R中，正态性的Shapiro-Wilk检验可以通过函数shapiro.test()进行</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="描述.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
+<span id="cb36-2"><a href="描述.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(RBC)<span class="co">#W 检验,我们看到p-value&gt;0.05意味着我们不拒绝数据服从正态分布的原假设。</span></span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  RBC
+## W = 0.98908, p-value = 0.3524</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="描述.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ad.test</span>(RBC)<span class="co">#D 检验</span></span></code></pre></div>
+<pre><code>## 
+##  Anderson-Darling normality test
+## 
+## data:  RBC
+## A = 0.66115, p-value = 0.08262</code></pre>
+<p>注意的是，在实践中，正态检验通常被认为过于保守，因为对于大样本(n&gt;50)，对正态条件的一个 小偏差可能会导致违反正态判断的条件。由于正态性检验是一种假设检验，所以随着样本量的增加，其检测较小差 异的能力也会增加。因此，随着观测数的增加，Shapiro-Wilk检验变得非常敏感，甚至对正态性的一个 微小偏差也非常敏感。所以，根据正态性检验，数据不服从正态分布，尽管偏离正态分布的情况可以忽略不计，但数据 实际上服从正态分布。因此，通常情况下，正态性条件的验证是基于本文所介绍的所有方法的组合，即目视检验 (使用直方图和q-q图)和正式化检验(例如使用shapio-wilk检验)。</p>
+<p>参考：</p>
+<p>刘庆武,胡志艳，如何用SPSS、SAS 统计软件进行正态性检验，湘南学院学报(自然科学版)，2005 朱红兵，何丽娟，在SPSS10.0 中进行数据资料正态性检验的方法，首都体育学院学报，2004</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="推论统计.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/01-计量资料的统计描述.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R语言与医学统计学.pdf", "R语言与医学统计学.epub"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 3 章 推论统计 | 医学统计学与R语言</title>
+  <meta name="description" content="第 3 章 推论统计 | 医学统计学与R语言" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 3 章 推论统计 | 医学统计学与R语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 3 章 推论统计 | 医学统计学与R语言" />
+  
+  
+  
+
+<meta name="author" content="刘向" />
+
+
+<meta name="date" content="2021-07-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="描述.html"/>
+<link rel="next" href="t-分布.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 简介</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#软件准备"><i class="fa fa-check"></i><b>1.1</b> 软件准备</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i><b>1.2</b> 致谢</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#声明"><i class="fa fa-check"></i><b>1.3</b> 声明</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="描述.html"><a href="描述.html"><i class="fa fa-check"></i><b>2</b> 计量资料的统计描述</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="描述.html"><a href="描述.html#数据录入"><i class="fa fa-check"></i><b>2.1</b> 数据录入</a></li>
+<li class="chapter" data-level="2.2" data-path="描述.html"><a href="描述.html#计算极差"><i class="fa fa-check"></i><b>2.2</b> 计算极差</a></li>
+<li class="chapter" data-level="2.3" data-path="描述.html"><a href="描述.html#计算标准差及四分位数间距"><i class="fa fa-check"></i><b>2.3</b> 计算标准差及四分位数间距</a></li>
+<li class="chapter" data-level="2.4" data-path="描述.html"><a href="描述.html#计算频数分布"><i class="fa fa-check"></i><b>2.4</b> 计算频数分布</a></li>
+<li class="chapter" data-level="2.5" data-path="描述.html"><a href="描述.html#描述性统计的度量"><i class="fa fa-check"></i><b>2.5</b> 描述性统计的度量</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="描述.html"><a href="描述.html#算术平均值"><i class="fa fa-check"></i><b>2.5.1</b> 算术平均值</a></li>
+<li class="chapter" data-level="2.5.2" data-path="描述.html"><a href="描述.html#几何平均值"><i class="fa fa-check"></i><b>2.5.2</b> 几何平均值</a></li>
+<li class="chapter" data-level="2.5.3" data-path="描述.html"><a href="描述.html#变异系数"><i class="fa fa-check"></i><b>2.5.3</b> 变异系数</a></li>
+<li class="chapter" data-level="2.5.4" data-path="描述.html"><a href="描述.html#众数及排序"><i class="fa fa-check"></i><b>2.5.4</b> 众数及排序</a></li>
+<li class="chapter" data-level="2.5.5" data-path="描述.html"><a href="描述.html#其他描述性统计"><i class="fa fa-check"></i><b>2.5.5</b> 其他描述性统计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="描述.html"><a href="描述.html#正态分布和标准正态分布"><i class="fa fa-check"></i><b>2.6</b> 正态分布和标准正态分布</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="描述.html"><a href="描述.html#概率密度函数dnorm"><i class="fa fa-check"></i><b>2.6.1</b> 概率密度函数dnorm()</a></li>
+<li class="chapter" data-level="2.6.2" data-path="描述.html"><a href="描述.html#概率累积分布函数pnorm"><i class="fa fa-check"></i><b>2.6.2</b> 概率累积分布函数pnorm()</a></li>
+<li class="chapter" data-level="2.6.3" data-path="描述.html"><a href="描述.html#正态分位函数qnorm"><i class="fa fa-check"></i><b>2.6.3</b> 正态分位函数qnorm()</a></li>
+<li class="chapter" data-level="2.6.4" data-path="描述.html"><a href="描述.html#生成正态分布函数rnorm"><i class="fa fa-check"></i><b>2.6.4</b> 生成正态分布函数rnorm()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="描述.html"><a href="描述.html#正态性检验"><i class="fa fa-check"></i><b>2.7</b> 正态性检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="推论统计.html"><a href="推论统计.html"><i class="fa fa-check"></i><b>3</b> 推论统计</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="推论统计.html"><a href="推论统计.html#统计量与标准误"><i class="fa fa-check"></i><b>3.1</b> 统计量与标准误</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="t-分布.html"><a href="t-分布.html"><i class="fa fa-check"></i><b>4</b> t 分布</a></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Methods</a></li>
+<li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> Applications</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">医学统计学与R语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="推论统计" class="section level1" number="3">
+<h1><span class="header-section-number">第 3 章</span> 推论统计</h1>
+<p>推论统计（或称统计推断，Statistical inference），指统计学中，研究如何根据样本数据去推断总体数量特征的方法。 它是在对样本数据进行描述的基础上，对统计总体的未知数量特征做出以概率形式表述的推断。更概括地说， 是在一段有限的时间内，通过对一个随机过程的观察来进行推断的。统计学中，统计推断与描述统计相对应。</p>
+<p>推论统计(Statistical inferences)是借助抽样调查，从局部推断总体，以对不肯定的事物做出决策的一种统计。 有总体参数估计与假设检验两种。前者以一次性抽样实验为依据，对整个总体的某个数字特征做出估计。后者则是对 某种假设进行检验，根据计算结果推断所做的假设是否可以接受。如平均数、标准差、相关系数、回归系数等特征的 总体估计及差异显著性检验。推断统计的理论基础是概率论，它更多地需要借助抽样理论与方法。
+## 参数估计与假设检验</p>
+<p>参数估计背后的思想是通过对从总体中抽取的样本进行统计显著性检验(如t检验)，为研究人员提供关于总体的统计推断。 最常用的就是t检验，其参数检验是基于W.S.Gosset的t统计量，该统计数据假设变量来自正态总体。t检验统计量中的总体均值是已知的。 这种分布称为t分布，其形状与正态分布类似，即钟形曲线。t检验用于检验那些样本小于30的样本比正态分布要好， 在大样本上做的和正态分布一样好。</p>
+<p>假设检验(Hypothesis test)过去也叫做显著性检验(Significance test)，是利用小概率反证法思想，从问题的对立面(H0
+)出发， 间接判断解决问题(H1
+)是否成立。即在假设H0
+成立的条件下，计算检验统计量(Test static)，然后根据P
+值(P-value)来判断。</p>
+<div id="统计量与标准误" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> 统计量与标准误</h2>
+<p>样本是总体的代表和反映，也是统计推断的依据，为了对总体的分布或数字特征进行各种统计推断，还需要对样本作加工处理， 把样本中应关心的事物和信息集中起来，针对不同的问题构造出样本的不同函数(如均值，方差，极差，标准差，中位数，众数等)，这种样本的函数我们称其为统计量。</p>
+<p>样本统计量的标准差即为标准误(Stand error,SE)，反映了抽样的统计量的离散程度或误差大小。如样本均数的标准差也称为均数标准误 (Stand error of mean, SEM)，反映了样本均数的离散程度。</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="描述.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="t-分布.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/02-总体均数的估计与假设检验.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R语言与医学统计学.pdf", "R语言与医学统计学.epub"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 2 章 致谢 | 医学统计学与R语言</title>
+  <meta name="description" content="第 2 章 致谢 | 医学统计学与R语言" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 2 章 致谢 | 医学统计学与R语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 2 章 致谢 | 医学统计学与R语言" />
+  
+  
+  
+
+<meta name="author" content="刘向" />
+
+
+<meta name="date" content="2021-07-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="intro.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 简介</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#软件准备"><i class="fa fa-check"></i><b>1.1</b> 软件准备</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="致谢.html"><a href="致谢.html"><i class="fa fa-check"></i><b>2</b> 致谢</a></li>
+<li class="chapter" data-level="3" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>3</b> Introduction</a></li>
+<li class="chapter" data-level="4" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>4</b> Literature</a></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Methods</a></li>
+<li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> Applications</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">医学统计学与R语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="致谢" class="section level1" number="2">
+<h1><span class="header-section-number">第 2 章</span> 致谢</h1>
+<p>谨以此书献给我的导师范老师！
+# 声明
+本笔记可供选修《医学统计学》课程的同学学习使用，如果您需要将素材和代码作其它用途，请联系作者 <a href="mailto:921818611@qq.com" class="email">921818611@qq.com</a>。</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/index.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R语言与医学统计学.pdf", "R语言与医学统计学.epub"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
